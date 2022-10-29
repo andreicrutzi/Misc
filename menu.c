@@ -7,7 +7,7 @@
  */
 int main() {
     char buffer[50];
-    int rep = 1, option, i;
+    int rep = 1, option;
 
     while(rep) {
         option = 0;
@@ -15,7 +15,7 @@ int main() {
         scanf("%[^\n]48", buffer);
         fseek(stdin, 0, SEEK_END);
 
-        for (i = 0; buffer[i]; i++) {
+        for (int i = 0; buffer[i]; i++) {
             if(isdigit(buffer[i]))
                 option = option * 10 + buffer[i] - 48;
             else {
