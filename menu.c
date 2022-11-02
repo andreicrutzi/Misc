@@ -1,31 +1,33 @@
 #include <stdio.h>
 #include <ctype.h>
 /*
- * I know it's just a menu
- * but at least it does its job well.
- * Not the best but I am proud of it
+ * String validation =)))
  */
+
+int String_validation (int *x)
+{
+    static char buffer[101];
+    scanf("%[^\n]99", buffer);
+    fseek(stdin, 0, SEEK_END);
+    *x = 0;
+    for (int i = 0; buffer[i]; i++) {
+        if(isdigit(buffer[i]))
+            (*x) = (*x) * 10 + buffer[i] - 48;
+        else  return 0;
+    }
+    return 1;
+}
+
 int main() {
-    char buffer[50];
-    int rep = 1, option;
+    int rep = 1, k = 0;
+    int *option;
+    option = &k;
 
     while(rep) {
-        option = 0;
         printf("1. Instruction 1\n2. Instruction 2\n3. Instruction 3\n4. Exit\n");
-        scanf("%[^\n]48", buffer);
-        fseek(stdin, 0, SEEK_END);
 
-        for (int i = 0; buffer[i]; i++) {
-            if(isdigit(buffer[i]))
-                option = option * 10 + buffer[i] - 48;
-            else {
-                option = 0;
-                break;
-            }
-        }
-
-        if (option)
-            switch (option) {
+        if (String_validation(option))
+            switch (*option) {
                 case 1:
                     printf("Instruction 1.\n");
                     //Do your thing
